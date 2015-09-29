@@ -30,7 +30,7 @@
 
 #if __OBJC2__
 
-#include <Foundation/NSObject.h>
+#include <NSObject.h>
 
 // All methods of class Protocol are unavailable. 
 // Use the functions in objc/runtime.h instead.
