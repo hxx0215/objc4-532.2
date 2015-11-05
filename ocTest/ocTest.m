@@ -26,6 +26,15 @@
 @implementation Father
 
 
+- (void)printSelf{
+    NSLog(@"Father:%@",self);
+    [self printSelf];
+}
+
+- (id)performSelector:(SEL)aSelector{
+//     ((void (*)(id, SEL, id))objc_msgSend)(self, @selector(otherMethodWithArgument:), arg);
+    return ((id (*)(id,SEL))objc_msgSend)(self,aSelector);
+}
 
 @end
 
@@ -43,8 +52,13 @@
         ssuper.receiver = self;
         ssuper.super_class = class_getSuperclass(objc_getClass("Son"));
         NSStringFromClass(((Class (*)(struct objc_super *, SEL))(void *)objc_msgSendSuper)(&ssuper, sel_registerName("class")));
+        [super printSelf];
     }
     return self;
+}
+
+- (void)printSelf{
+    NSLog(@"Son");
 }
 
 @end
