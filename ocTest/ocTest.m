@@ -94,6 +94,12 @@
     }];
 }
 
+- (void)testNewandalloc{
+    NSObject *o1 = [[NSObject alloc] init];
+    NSObject *o2 = [NSObject new];
+    NSLog(@"%@ %@",o1,o2);
+}
+
 - (void)testMyself{
     Son *s = [Son new];
 }
